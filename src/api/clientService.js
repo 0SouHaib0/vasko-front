@@ -10,3 +10,11 @@ export const getAllClients = async () => {
     throw error;
   }
 };
+export const addClient = async (name, email, phone) => {
+  try {
+    const response = await axios.post(`${API_URL}/clients/addClient`, { name, email, phone });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
