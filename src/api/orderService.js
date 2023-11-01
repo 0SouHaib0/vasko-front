@@ -10,3 +10,31 @@ export const getAllOrders = async () => {
     throw error;
   }
 };
+
+export const getOrderById = async (orderId) => {
+  try {
+    const response = await axios.get(`${API_URL}/orders/${orderId}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getOrdersByClientId = async (clientId) => {
+  try {
+    const response = await axios.get(`${API_URL}/orders/by-client?client_id=${clientId}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
+export const getNumberOrdersByCLients= async(clientId)=>{
+  try{
+    const response =await axios.get(`${API_URL}/orders/number-clients?client_id=${clientId}`)
+    return response.data;
+    }catch(err){
+      throw err;
+      }
+}

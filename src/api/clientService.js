@@ -18,3 +18,12 @@ export const addClient = async (name, email, phone) => {
     throw error.response.data;
   }
 };
+
+export const getClientById = async (clientId) => {
+  try {
+    const response = await axios.get(`${API_URL}/clients/${clientId}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
