@@ -5,7 +5,8 @@ import AddClientForm from "../components/AddClientForm";
 export function FormClient(){
 
     return(
-        <><Navbar /><AddClientForm /></>
+        <><Navbar />
+        <AddClientForm /></>
     );
     
 }

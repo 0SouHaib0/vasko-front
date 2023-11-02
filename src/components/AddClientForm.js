@@ -2,13 +2,15 @@ import React from "react";
 import { useState } from "react";
 import { signup } from "../api/authLogService";
 import { addClient } from "../api/clientService";
+import { InfoClient } from "./infoClient";
 
 const AddClientForm= ()=>{
     const[name,setName]=useState('');
     const [email,setEmail]=useState('');
     const [phone,setPhone]=useState('');
     const [error, setError] = useState('');
-
+    const [showClient,setShowClient]=useState(false);
+  const [clientId, setClientId] = useState(null); 
 
     const handleAddClient=async()=>{
         if (!name || !email || !phone) {
@@ -19,6 +21,10 @@ const AddClientForm= ()=>{
         try{
             const response = await addClient(name,email,phone);
             console.log(response);
+            const addedClientId = response.id;
+            setShowClient(true);
+            setClientId(addedClientId);
+
         }
         catch(error){
             console.error(error);
@@ -27,7 +33,7 @@ const AddClientForm= ()=>{
 
     return(
       <div className="form">
-        
+         {!showClient &&
       <div className="form-container">
              <form>
              <img src="images/logoVasko.png" className="logo-vasko"/>
@@ -59,7 +65,8 @@ const AddClientForm= ()=>{
 
       </form>
      
-            </div>
+            </div>}
+            {showClient &&  <InfoClient clientId={clientId}/>}
             </div>
     );
 }
