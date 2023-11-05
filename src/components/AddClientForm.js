@@ -3,6 +3,7 @@ import { useState } from "react";
 import { signup } from "../api/authLogService";
 import { addClient } from "../api/clientService";
 import { InfoClient } from "./infoClient";
+import { NumberOfOrders } from "./NumberOfOrders";
 
 const AddClientForm= ()=>{
     const[name,setName]=useState('');
@@ -32,8 +33,9 @@ const AddClientForm= ()=>{
     }
 
     return(
-      <div className="form">
+     <div>
          {!showClient &&
+          <div className="form">
       <div className="form-container">
              <form>
              <img src="images/logoVasko.png" className="logo-vasko"/>
@@ -64,9 +66,13 @@ const AddClientForm= ()=>{
         {error && <p className="error-form">{error}</p>}
 
       </form>
-     
+     </div>
             </div>}
-            {showClient &&  <InfoClient clientId={clientId}/>}
+            {showClient && <div><InfoClient clientId={clientId}/>
+            {/* <NumberOfOrders clientId={clientId} />  */}
+            
+            </div>
+            }
             </div>
     );
 }

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getClientById } from "../api/clientService";
+import { getClientById  } from "../api/clientService";
+import { getNumberOrdersByCLients } from "../api/orderService";
 
 export function InfoClient(props) {
   const [clientId, setClientId] = useState(props.clientId);
-  const [clientData, setClientData] = useState(null); // State for client data
+  const [clientData, setClientData] = useState(null); 
+  const [numberData, setNumberData] = useState(null); // State for client data
 
   useEffect(() => {
     async function fetchClientById(id) {
@@ -15,7 +17,18 @@ export function InfoClient(props) {
         console.log("Error fetching client", error);
       }
     }
+    async function fetchNbOrdersById(id) {
+      try {
+        const data = await getNumberOrdersByCLients(id);
+        // Set the client data in the state
+        setNumberData(data);
+      } catch (error) {
+        console.log("Error fetching client", error);
+      }
+    }
 
+    // Pass clientId as a dependency to useEffect
+    fetchNbOrdersById(clientId);
     // Pass clientId as a dependency to useEffect
     fetchClientById(clientId);
   }, [clientId]);
@@ -23,7 +36,21 @@ export function InfoClient(props) {
   return (
     <div>
       {/* Check if clientData is available before rendering */}
-      {clientData && <p>{clientData.name}</p>}
+      {clientData && 
+      <div className="form-form">
+        <div className="info-client-details">
+          <div><span className="label-info">Nom complet :</span>{clientData.name}</div>  
+          <div><span className="label-info">Email :</span>{clientData.email}</div>
+          <div><span className="label-info">Numero :</span>{clientData.phone}</div>
+          <div><span className="label-info">Nombre d'ordres :</span> {numberData}</div>
+        </div>
+        <div>
+          <button className="add-new" onClick><span className="fa fa-plus" style={{color:"green",marginRight:5}}></span>Ajouter une nouvelle commande</button>
+          <button className="add-new" onClick><span className="fa fa-rotate-left" style={{color:"green",marginRight:5}}></span>Retourner a la liste des clients</button>
+          {numberData !=0 &&<button className="add-new" onClick><span className="fa fa-bars" style={{color:"green",marginRight:5}}></span>Accéder au liste des commandes</button>}
+        </div>
+        </div>
+        }
     </div>
   );
 }

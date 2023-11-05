@@ -32,7 +32,7 @@ export const getOrdersByClientId = async (clientId) => {
 
 export const getNumberOrdersByCLients= async(clientId)=>{
   try{
-    const response =await axios.get(`${API_URL}/orders/number-clients?client_id=${clientId}`)
+    const response =await axios.get(`${API_URL}/orders/number-by-client?client_id=${clientId}`)
     return response.data;
     }catch(err){
       throw err;

@@ -4,15 +4,15 @@ export function Navbar(){
         <div>
               <nav>
            
-         <div class="logo">
+         <div className="logo">
             Vasco De Gama
          </div>
          <input type="checkbox" id="click"/>
-         <label for="click" class="menu-btn">
-         <i class="fa fa-bars"></i>
+         <label for="click" className="menu-btn">
+         <i className="fa fa-bars"></i>
          </label>
          <ul>
-            <li><a class="active" href="#">Home</a></li>
+            <li><a className="active" href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Gallery</a></li>

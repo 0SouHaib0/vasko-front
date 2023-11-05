@@ -214,3 +214,32 @@ left: 30%;
     height: 40px;
     color: white;
 }
+.info-client-details{
+  border: 1px solid #eee;
+  padding: 3rem;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 9px 1px #eee;
+  width: 90%;
+  font-size: 23px;
+  line-height: 2;
+}
+.label-info{
+  color: #aaa;
+}
+.add-new{
+  border-radius: 5px;
+  padding: 7px 27px;
+  font-size: 16px;
+  text-align: center;
+  margin: 7px;
+  background-color: white;
+  border: 1px solid #F0F0F0;
+  box-shadow: 10px 5px 5px #EEE;
+  margin: 20px;
+  cursor: pointer;
+}
+.form-form{
+  display: grid;
+  grid-template-columns: 70% 20%;  
+}
