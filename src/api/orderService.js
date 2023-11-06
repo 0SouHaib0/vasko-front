@@ -38,3 +38,12 @@ export const getNumberOrdersByCLients= async(clientId)=>{
       throw err;
       }
 }
+
+export const addOrder = async (clientId,qtVeste,qtGilet,qtPants) => {
+  try {
+    const response = await axios.post(`${API_URL}/orders/addNewOrder`, { clientId, qtVeste, qtGilet,qtPants });
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
